@@ -9,8 +9,9 @@
 #include "GameFramework/Actor.h"
 #include "GameFramework/PlayerController.h"
 #include "BattleTank.h"
-#include "Tank.h"
 #include "TankAIController.generated.h"
+
+class ATank;
 
 /**
  * 
