@@ -17,8 +17,7 @@ void UTankBarrel::Elevate(float RelativeSpeed)
 	auto ClampedElevation = FMath::Clamp<float>(RawNewElevation, MinElevationDegrees, MaxElevationDegrees);
 
 	auto Time = GetWorld()->DeltaTimeSeconds;
-
-	UE_LOG(LogTemp, Warning, TEXT("%f: Elevation Change %f, RawNewElevation %f, Clamped Elevation %f"), Time, ElevationChange, RawNewElevation, ClampedElevation);
+	//UE_LOG(LogTemp, Warning, TEXT("%f: Elevation Change %f, RawNewElevation %f, Clamped Elevation %f"), Time, ElevationChange, RawNewElevation, ClampedElevation);
 
 	SetRelativeRotation(FRotator(ClampedElevation, 0, 0));
 }

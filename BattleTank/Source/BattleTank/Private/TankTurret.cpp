@@ -16,7 +16,7 @@ void UTankTurret::Rotate(float RelativeSpeed)
 
 	auto Time = GetWorld()->DeltaTimeSeconds;
 
-	UE_LOG(LogTemp, Warning, TEXT("%f: RotationChange %f, RawNewRotation %f"), Time, RotationChange, RawNewRotation);
+	//UE_LOG(LogTemp, Warning, TEXT("%f: RotationChange %f, RawNewRotation %f"), Time, RotationChange, RawNewRotation);
 
 	SetRelativeRotation(FRotator(0, RawNewRotation, 0));
 
