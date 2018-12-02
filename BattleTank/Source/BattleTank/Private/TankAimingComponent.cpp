@@ -3,6 +3,7 @@
 #include "TankAimingComponent.h"
 #include "TankBarrel.h"
 #include "TankTurret.h"
+#include "TankPlayerController.h"
 
 
 // Sets default values for this component's properties
@@ -57,18 +58,40 @@ void UTankAimingComponent::AimAt(FVector HitLocation, float LaunchSpeed)
 	{
 		auto AimDirection = OutLaunchVelocity.GetSafeNormal();
 		//UE_LOG(LogTemp, Warning, TEXT("%s aiming at %s from %s"), *TankName, *HitLocation.ToString(), *BarrelLocation);
-		auto Time = GetWorld()->GetTimeSeconds();
+		//auto Time = GetWorld()->GetTimeSeconds();
 		//UE_LOG(LogTemp, Warning, TEXT("%f: Aim solution found for %s"), Time, *TankName);
 		MoveBarrelTowards(AimDirection);
+
+		UE_LOG(LogTemp, Warning, TEXT("OutLaunchVelocity = %s"), *OutLaunchVelocity.GetSafeNormal().ToString());
 		
 	}
 	else
 	{
-		auto Time = GetWorld()->GetTimeSeconds();
-		//UE_LOG(LogTemp, Warning, TEXT("%f: No aim solution found for %s"), Time, *TankName);
-	}
+		float count = 1;
+		bool bHaveAimSolutionBackup = false;
 
-	PreviousHitLocation = HitLocation;
+		while (!bHaveAimSolutionBackup)
+		{
+			bHaveAimSolutionBackup = UGameplayStatics::SuggestProjectileVelocity(
+				this,
+				OutLaunchVelocity,
+				StartLocation,
+				HitLocation,
+				LaunchSpeed * count,
+				false,
+				0,
+				0,
+				ESuggestProjVelocityTraceOption::DoNotTrace,
+				FCollisionResponseParams::DefaultResponseParam,
+				TArray<AActor*>(),
+				false
+			);
+			count++;
+		}
+		MoveBarrelTowards(OutLaunchVelocity.GetSafeNormal());
+		UE_LOG(LogTemp, Warning, TEXT("OutLaunchVelocity = %s, count = %f"), *OutLaunchVelocity.GetSafeNormal().ToString(), count);
+
+	}
 }
 
 void UTankAimingComponent::MoveBarrelTowards(FVector AimDirection)
