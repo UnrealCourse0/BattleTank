@@ -62,7 +62,7 @@ void UTankAimingComponent::AimAt(FVector HitLocation, float LaunchSpeed)
 		//UE_LOG(LogTemp, Warning, TEXT("%f: Aim solution found for %s"), Time, *TankName);
 		MoveBarrelTowards(AimDirection);
 
-		UE_LOG(LogTemp, Warning, TEXT("OutLaunchVelocity = %s"), *OutLaunchVelocity.GetSafeNormal().ToString());
+		//UE_LOG(LogTemp, Warning, TEXT("OutLaunchVelocity = %s"), *OutLaunchVelocity.GetSafeNormal().ToString());
 		
 	}
 	else
