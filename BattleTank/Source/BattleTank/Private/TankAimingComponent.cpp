@@ -89,7 +89,7 @@ void UTankAimingComponent::AimAt(FVector HitLocation, float LaunchSpeed)
 			count++;
 		}
 		MoveBarrelTowards(OutLaunchVelocity.GetSafeNormal());
-		UE_LOG(LogTemp, Warning, TEXT("OutLaunchVelocity = %s, count = %f"), *OutLaunchVelocity.GetSafeNormal().ToString(), count);
+		//UE_LOG(LogTemp, Warning, TEXT("OutLaunchVelocity = %s, count = %f"), *OutLaunchVelocity.GetSafeNormal().ToString(), count);
 
 	}
 }
