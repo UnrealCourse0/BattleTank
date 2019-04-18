@@ -21,6 +21,6 @@ public:
 
 private:
 	UPROPERTY(EditDefaultsOnly, Category = "Setup")
-		float TrackMaxDrivingForce = 200000000; // Assume 40 tonne tank, and 1g accelleration
+		float TrackMaxDrivingForce = 40000000; // Assume 40 tonne tank, and 1g accelleration
 	
 };
