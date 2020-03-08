@@ -11,8 +11,6 @@
 #include "BattleTank.h"
 #include "TankAIController.generated.h"
 
-class ATank;
-
 /**
  * 
  */
